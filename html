@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Писателски бележник портфолио </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #e8dcc4;
+    --parchment-light: #f4ecd8;
+    --ink: #2b241c;
+    --leather: #7a4a2b;
+    --gold: #a6772c;
+    --gold-light: #c69a4e;
+    --ink-blue: #1f3a5f;
+    --ink-blue-dark: #14283f;
+    --ink-blue-light: #6f8fb3;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    line-height: 1.65;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(122,74,43,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(38,69,58,0.04) 0%, transparent 40%);
+  }
+
+  /* СИН ХЕДЪР — вид на мастилено-синя корица с позлатен обков */
+  header {
+    background: var(--ink-blue);
+    background-image: linear-gradient(180deg, var(--ink-blue) 0%, var(--ink-blue-dark) 100%);
+    color: var(--parchment-light);
+    padding: 4.5rem 1.5rem 3.5rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 6px double var(--gold-light);
+  }
+
+  header::before {
+    content: "❦";
+    color: var(--gold-light);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+
+  h1.site-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .site-tagline {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 0.9rem;
+  }
+
+  /* MAIN — непроменено спрямо оригиналния "index" дизайн */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  .shelf-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-blue);
+    border-bottom: 1px solid var(--ink-blue);
+    padding-bottom: 0.6rem;
+    margin-bottom: 2.2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cards {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .card {
+    background: var(--parchment-light);
+    border: 1px solid rgba(43,36,28,0.15);
+    border-radius: 2px;
+    padding: 1.9rem 2rem 1.6rem;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(43,36,28,0.05), 0 8px 18px -12px rgba(43,36,28,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 26px;
+    height: 26px;
+    background: linear-gradient(135deg, transparent 50%, var(--parchment) 50%);
+    box-shadow: -2px 2px 3px -1px rgba(43,36,28,0.25);
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1px 0 rgba(43,36,28,0.05), 0 14px 24px -12px rgba(43,36,28,0.35);
+  }
+
+  .card-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-blue);
+    border: 1px solid var(--ink-blue);
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 2px;
+    transform: rotate(-1.5deg);
+    margin-bottom: 0.9rem;
+  }
+
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+    color: var(--ink-blue-dark);
+  }
+
+  .card-excerpt {
+    margin: 0 0 1.1rem;
+    font-size: 0.98rem;
+    color: #4a4136;
+  }
+
+  .card-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+  }
+
+  .card-link:hover { color: var(--leather); border-color: var(--leather); }
+
+  footer {
+    text-align: center;
+    padding: 2.2rem 1.5rem 3rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-blue);
+    opacity: 0.85;
+  }
+
+  @media (max-width: 560px) {
+    header { padding: 3.2rem 1.2rem 2.6rem; }
+    .card { padding: 1.5rem 1.4rem 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="site-title">Писателски бележник</h1>
+  <div class="site-tagline">разкази · есета · бележки за писане</div>
+</header>
+
+<main>
+  <div class="shelf-label">
+    <span>Последни публикации</span>
+    <span>№ картотека</span>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <span class="card-date">19.07.2026</span>
+      <h2 class="card-title">Заглавие на разказа</h2>
+      <p class="card-excerpt">Тук слагаш кратко въведение или първите изречения от текста — колкото да привлечеш читателя да кликне и да продължи.</p>
+      <a class="card-link" href="razkaz-1.md">Прочети →</a>
+    </article>
+
+    <article class="card">
+      <span class="card-date">05.07.2026</span>
+      <h2 class="card-title">Второ заглавие</h2>
+      <p class="card-excerpt">Кратко описание на втория текст — може да е първият абзац или обобщение в едно изречение.</p>
+      <a class="card-link" href="razkaz-2.md">Прочети →</a>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  © 2026 · всички права запазени
+</footer>
+
+</body>
+</html>
